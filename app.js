@@ -26,19 +26,23 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
         diceDOM.style.display = 'block';
         diceDOM.src = 'dice-' + dice + '.png';
 
+        //console.log('Active player: ' + activePlayer + ' ' + prevDice + ' ' + dice);
         // 3. update the round score IF the rolled number was NOT 1
         if (dice !== 1) {
             // player lose entire score if rolled two 6 in a row
             if (prevDice + dice === 12) {
                 scores[activePlayer] = 0;
+                document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
                 nextPlayer();
-            } 
-            // add score
-            roundScore += dice;
-            document.getElementById('current-' + activePlayer).textContent = roundScore;
+            }
+            else {
+                 // add score
+                roundScore += dice;
+                document.getElementById('current-' + activePlayer).textContent = roundScore;
             
-            // save last dice result
-            prevDice = dice;
+                // save last dice result
+                prevDice = dice;
+            }
         }
         else {
             nextPlayer();

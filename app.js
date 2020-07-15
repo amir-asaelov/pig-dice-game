@@ -39,7 +39,8 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
             
             // save last dice result
             prevDice = dice;
-        } else {
+        }
+        else {
             nextPlayer();
         }
     }
